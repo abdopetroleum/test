@@ -1,0 +1,99 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load numberInput dropDown headline error_messages %}
+
+
+
+{% block title %}
+  PVT
+{% endblock %}
+
+{% block sidebar %}
+  {% include "layouts/left_sidebar.html" %}
+{% endblock %}
+
+{% block main %}
+{#  {% include "../pages/well.html" %}#}
+<div class="main">
+    <div class="main-header">
+        <div class="header-labelIcon">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="129.148" height="48" viewBox="0 0 129.148 48">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#pvt-label"></use>
+                        </svg>
+                    </span>
+        </div>
+        <div class="header-timeline">
+            <div class="header-timeline-item active">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.325" height="20.325" viewBox="0 0 20.325 20.325">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#data-input"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Data Input</span>
+            </div>
+            <div onclick="chartsToggle(this)" class="header-timeline-item">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#charts"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Charts</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-grid">
+
+        <div class="card card--input card__maximized">
+
+            <div class="toggles">
+                <button class="maximize" onclick="maximizeToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="23" viewBox="0 0 52 46">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#maximize-toggle"></use>
+                    </svg>
+                </button>
+                <button class="save">save</button>
+
+            </div>
+
+            <div class="card-header">Data Input</div>
+
+            <div class="card-content">
+                <form novalidate
+                      id="pvt_form"
+                      action="{% url 'simulations:run.well' simulation.url %}"
+                      method="post"
+                >
+
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                        {{ field }}
+                        {% error_messages field.errors %}
+                    {% endfor %}
+
+                </form>
+            </div>
+        </div>
+
+        <div class="sub-grid hidden">
+
+
+            <div class="card card--second">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+
+            <div class="card"></div>
+
+        </div>
+
+
+    </div>
+
+</div>
+{% endblock %}
+
+{% block options %}
+  {% include "layouts/right_sidebar.html" %}
+{% endblock %}

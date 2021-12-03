@@ -1,0 +1,116 @@
+{% load static %}
+    <div class="options">
+
+
+        <div class="options-buttons">
+            <button class="options-button">
+                <span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#listview"></use>
+                    </svg>
+
+                </span>
+            </button>
+            <button class="options-button">
+                <span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#other"></use>
+                    </svg>
+
+                </span>
+            </button>
+        </div>
+
+        <div class="option">
+            <div class="option-label">
+                <span>Project Info</span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10.526" viewBox="0 0 16 10.526">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#options-dropdown"></use>
+                    </svg>
+                </span>
+            </div>
+            <div class="option-content">
+                <div class="project-info">
+                    <div class="project-icon">
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="55" height="57" viewBox="0 0 55 57">
+                                <use xlink:href="{% static 'res/svg/options-icons.svg' %}#project-info"></use>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="project-description">
+                        <div class="project-name">
+                            <span>{{ simulation.name }}</span>
+                        </div>
+                        <div class="project-details">
+                            <span>
+                                {% if simulation.creator %}
+                                    {{ simulation.creator.email }}
+                                {% endif %}
+                            </span>
+                            <span>{{ simulation.created_at|date:"d M Y" }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="option inactive">
+            <div class="option-label">
+                <span>Log</span>
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10.526" viewBox="0 0 16 10.526">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#options-dropdown"></use>
+                    </svg>
+                </span>
+            </div>
+            <div class="option-content">
+                <div class="log">
+                    <div class="log-item">
+                        <div class="log-icon">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                                    <use xlink:href="{% static 'res/svg/options-icons.svg' %}#data-input"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="log-message">Data input completed!</div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                                    <use xlink:href="{% static 'res/svg/options-icons.svg' %}#warning"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="log-message">Warning! (PVT Confirmation)</div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                                    <use xlink:href="{% static 'res/svg/options-icons.svg' %}#data-analysis"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="log-message">Data analysis completed!</div>
+                    </div>
+                    <div class="log-item">
+                        <div class="log-icon">
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+                                    <use xlink:href="{% static 'res/svg/options-icons.svg' %}#error"></use>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="log-message">Error at data input form</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>

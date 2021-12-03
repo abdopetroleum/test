@@ -1,0 +1,90 @@
+{% extends "layouts/simulation_base.html" %}
+{% load static %}
+
+{% block dashboard_header %}
+    <div class="dashboard-container-header">
+        <a href="{% url 'simulations:simulations' %}">
+            <div class="welcome-text dashboard-page-header">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48.002" height="48.002" viewBox="0 0 48.002 48.002">
+                        <use xlink:href="{% static 'res/svg/newSimulation-icons.svg' %}#new-simulation-back"></use>
+                    </svg>
+                </span>
+                <span>Back to Simulations List</span>
+            </div>
+        </a>
+        <div class="header-profile">
+            <div class="indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="15" viewBox="0 0 17 15">
+                    <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#profile-indicator"></use>
+                </svg>
+            </div>
+            <div class="label">Profile</div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74">
+                    <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#header-profile"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block dashboard_content %}
+    <div class="dashboard-container-content new-simulation-page">
+
+
+        <div class="info">
+                Fill out this form to<br>initiate a new Simulation
+            <hr>
+        </div>
+        <!--            TODO: fix the height of this part-->
+        <div class="new-simulation">
+            <div class="new-simulation-form">
+                <form action="{% url 'simulations:create' %}" method="post" id="create-form">
+                
+                    {% csrf_token %}
+
+                    <div class="input-row">
+                            <div class="new-simulation-input input-field__inline text-input">
+                                <label for="Name">Name</label>
+                                <input required autofocus id="Name" name="name" pattern="([A-z0-9\s]){4,50}" type="text" placeholder="Enter a name...">
+                            </div>
+                            <div class="new-simulation-input input-field__inline text-input">
+                                <label for="URL">URL</label>
+                                <input required id="Url" name="url" pattern="([A-z0-9\s]){4,50}" type="text" placeholder="Enter simulation url">
+                            </div>
+                    </div>
+
+                    <div class="new-simulation-input textarea">
+                        <label for="Description">Description</label>
+                        <textarea id="Description" name="description" placeholder="Type the description..."></textarea>
+                    </div>
+
+                    <div class="new-simulation-input input__select">
+                        <label for="Visibility">Visibility</label>
+                        <select required id="Visibility" name="visibility">
+                            <option disabled value="0">Specify the visibility of this simulation</option>
+                            <option value="2">Public</option>
+                            <option value="1">Private</option>
+                        </select>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div style="color: red; text-align:center; margin-bottom: 10px;">
+                            <span><strong>{{ message }}</strong></span>
+                        </div>
+                        {% endfor %}
+                    {% endif %}  
+
+                    <input class="input-btn" type="submit" value="Start New Simulation">
+
+                </form>
+            </div>
+        </div>
+        <div class="info">
+        </div>
+    </div>
+{% endblock %}
+
+

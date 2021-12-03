@@ -1,0 +1,30 @@
+<div class="input-field__inline hasTooltip {{ widget.additional_classes }}">
+  <label for="{{ widget.attrs.id }}">
+    <span class="input-label">{{ widget.label }}</span>
+    <span class="tooltip"
+      >i<dfn><span>{{ widget.tooltip }}</span></dfn></span
+    >
+    <input
+      {{ widget.required }}
+      type="{{ widget.type }}"
+      name="{{ widget.name }}"
+      value="{{ widget.value }}"
+      id="{{ widget.attrs.id }}"
+      min="{{ widget.attrs.min }}"
+      max="{{ widget.attrs.max }}"
+      step="{{ widget.attrs.step }}"
+      placeholder="{{ widget.attrs.placeholder }}"
+    />
+    <div class="unit unit__select">
+      <select id="id_{{ widget.unit_name }}" name="{{ widget.unit_name }}">
+        {% for unit in widget.attrs.units %}
+          {% if unit == widget.attrs.target_unit %}
+            <option selected value="{{ unit }}">{{ unit }}</option>
+          {% else %}
+            <option value="{{ unit }}">{{ unit }}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+  </label>
+</div>

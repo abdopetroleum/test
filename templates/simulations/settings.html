@@ -1,0 +1,21 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load numberInput dropDown headline error_messages %}
+
+
+
+{% block title %}
+  Simulation setting
+{% endblock %}
+
+{% block sidebar %}
+  {% include "layouts/left_sidebar.html" %}
+{% endblock %}
+
+{% block main %}
+    <h1>Setting</h1>
+{% endblock %}
+
+{% block options %}
+  {% include "layouts/right_sidebar.html" %}
+{% endblock %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% if messages %}
+        {% for m in messages %}
+            <h1>{{ m }}</h1>
+        {% endfor %}
+    {% endif %}
+
+
+    <h1>Test</h1>
+    <form method="post" {% url 'simulations:upload' %} enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Fluid</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Reservoir</h1>
+    <form action="{% url 'simulations:upload-reservoir' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Well</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Seperator</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Pump</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Rod</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Pumpunit</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>GearBox</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+    <hr/>
+
+    <h1>Motor</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="myfile" required="required">
+        <input type="submit" value="Upload">
+    </form>
+
+</body>
+</html>

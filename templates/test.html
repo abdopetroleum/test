@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Well form</h1>
+{{ wellform.as_p }}
+<hr/>
+
+<h1>Fluid form</h1>
+{{ FluidForm.as_p }}
+<hr/>
+
+<h1>Gearbox form</h1>
+{{ GearBoxForm.as_p }}
+<hr/>
+
+<h1>IPR form</h1>
+{{ IPRForm.as_p }}
+<hr/>
+
+<h1>Membership form</h1>
+{{ MemberShipForm.as_p }}
+<hr/>
+
+<h1>Pumpunit form</h1>
+{{ PumpUnitForm.as_p }}
+<hr/>
+
+<h1>Pump form</h1>
+{{ PumpForm.as_p }}
+<hr/>
+
+<h1>Rod form</h1>
+{{ RodForm.as_p }}
+<hr/>
+
+<h1>SepratorSizeForm form</h1>
+{{ SepratorSizeForm.as_p }}
+<hr/>
+
+
+
+{% for m in messages %}
+    {{ m }}
+{% endfor %}
+<h1>Sepratorform form</h1>
+<form novalidate action="{% url 'simulations:test-sep' %}" method="post">
+    {% csrf_token %}
+    {{ sepratorform.as_p }}
+    <input type="submit" value="OK">
+</form>
+<hr/>
+
+
+</body>
+</html>

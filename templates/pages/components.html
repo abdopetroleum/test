@@ -1,0 +1,154 @@
+{% load static %}
+{% load numberInput dropDown headline %}
+
+
+<div class="main">
+    <div class="main-header">
+        <div class="header-labelIcon">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="129.148" height="48" viewBox="0 0 129.148 48">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#pvt-label"></use>
+                        </svg>
+                    </span>
+        </div>
+        <div class="header-timeline">
+            <div class="header-timeline-item">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.325" height="20.325" viewBox="0 0 20.325 20.325">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#data-input"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Data Input</span>
+            </div>
+            <div class="header-timeline-item">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21.692" height="20" viewBox="0 0 21.692 20">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#confirmation"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Confirmation</span>
+            </div>
+            <div class="header-timeline-item active">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#charts"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Charts</span>
+            </div>
+            <div class="header-timeline-item disable">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.988" height="21.001" viewBox="0 0 20.988 21.001">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#stats"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Stats</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-grid">
+
+        <div class="card card--input card__maximized">
+
+            <div class="toggles">
+                <button class="maximize" onclick="maximizeToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52" height="46" viewBox="0 0 52 46">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#maximize-toggle"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="card-header">Data Input</div>
+
+            <div class="card-content">
+
+                    <form action="">
+
+                        <div class="input-row">
+
+                            <div class="input-field__inline">
+                                <label for="gor">
+                                    <span class="input-label">Solution GOR</span>
+                                    <input id="gor" type="text" placeholder="571.41">
+                                    <span class="unit">scf/STB</span>
+                                </label>
+                            </div>
+
+                            <div class="input-field__inline alert">
+                                <label for="gor">
+                                    <span class="input-label">Solution GOR</span>
+                                    <input id="gor" type="text" placeholder="571.41">
+                                    <span class="unit">scf/STB</span>
+                                </label>
+                            </div>
+
+
+                        </div>
+
+                        <div class="input-field__inline">
+                            <label for="gor">
+                                <span class="input-label">Solution GOR</span>
+                                <input id="gor" type="text" placeholder="571.41">
+                                <span class="unit">scf/STB</span>
+                            </label>
+                        </div>
+
+                        <div class="input-row">
+
+                            <div class="input-field__inline input__select">
+                                <label for="gor">
+                                    <span class="input-label">Correlations</span>
+                                    <select id="gor">
+                                        <option value="0">Select Correlation:</option>
+                                        <option value="1">Value 1</option>
+                                        <option value="2">Value 2</option>
+                                        <option value="3">Value 3</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <div class="input-field__inline input__toggle">
+                                <span class="label">Toggle test</span>
+                                <input type="checkbox" id="switch"/><label for="switch"></label>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- It's better to put buttons in a div.btn-row -->
+                        <div class="btn-row">
+
+                            <!-- you can use btn classes below with anchors, buttons and submit inputs -->
+                            <a class="input-btn input-btn-danger" href="">test link</a>
+
+                            <button class="input-btn input-btn-success">test button</button>
+
+                            <button class="input-btn input-btn-secondary">test button</button>
+
+                            <input class="input-btn input-btn-primary" type="submit" value="test submit">
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+        </div>
+
+        <div class="sub-grid">
+
+
+            <div class="card card--second">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+
+            <div class="card"></div>
+
+        </div>
+
+
+    </div>
+
+</div>

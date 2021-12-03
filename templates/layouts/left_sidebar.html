@@ -1,0 +1,177 @@
+{% load static %}
+
+{% url 'simulations:run.fluid' simulation.url as fluid_url  %}
+{% url 'simulations:run.reservoir' simulation.url as reservoir_url  %}
+{% url 'simulations:run.well' simulation.url as well_url  %}
+{% url 'simulations:run.separator' simulation.url as separator_url  %}
+{% url 'simulations:run.rod' simulation.url as rod_url  %}
+{% url 'simulations:run.pump_unit' simulation.url as pump_unit_url  %}
+{% url 'simulations:run.pump' simulation.url as pump_url  %}
+{% url 'simulations:run.gearbox' simulation.url as gearbox_url  %}
+{% url 'simulations:run.motor' simulation.url as motor_url  %}
+
+<div class="sidebar">
+    <div class="sidebar-brand">
+        <a href="{% url 'main:index' %}">
+            <div class="brand">
+                <img src="{% static 'res/brand/logo.svg' %}" alt="logo">
+            </div>
+        </a>
+    </div>
+    <div class="sidebar-nav">
+        <nav class="nav-links">
+            <ul>
+                    <li>
+                        <div class="nav-link-set {% if request.path == fluid_url or request.path == reservoir_url %} active {% endif %}">
+                            <div class="nav-link">
+                                <span class="nav-link-icon">
+                                    <svg id="fluid" xmlns="http://www.w3.org/2000/svg" width="20.65" height="33.672" viewBox="0 0 20.65 33.672">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#fluid"></use>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-label">Fluid</span>
+                            </div>
+                            <a href="{{ fluid_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == fluid_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span> 
+                                    <span class="nav-link-label">Fluid</span>
+                                </div>
+                            </a>
+                            <a href="{{ reservoir_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == reservoir_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-label">Reservoir</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="nav-link-set {% if request.path == well_url or request.path == separator_url or request.path == pump_url %} active {% endif %}">
+                            <div class="nav-link">
+                                <span class="nav-link-icon">
+                                    <svg id="fluid" xmlns="http://www.w3.org/2000/svg" width="20.65" height="33.672" viewBox="0 0 20.65 33.672">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#fluid"></use>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-label">Well</span>
+                            </div>
+                            <a href="{{ well_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == well_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span> 
+                                    <span class="nav-link-label">Well</span>
+                                </div>
+                            </a>
+                            <a href="{{ separator_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == separator_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-label">Separator</span>
+                                </div>
+                            </a>
+                            <a href="{{ pump_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == pump_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-label">Pump</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{{ rod_url }}">
+                            <div class="nav-link {% if request.path == rod_url %} active {% endif %}">
+                                <span class="nav-link-icon">
+                                    <svg id="reservoir" xmlns="http://www.w3.org/2000/svg" width="20.402" height="20.401" viewBox="0 0 20.402 20.401">
+                                        <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#reservoir"></use>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-label">Rod String</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ pump_unit_url }}">
+                            <div class="nav-link {% if request.path == pump_unit_url %} active {% endif %}">
+                                <span class="nav-link-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20.898" height="21.837" viewBox="0 0 20.898 21.837">
+                                        <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#fishing-reel"></use>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-label">Pump Unit</span>
+                            </div>
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <div class="nav-link-set {% if request.path == gearbox_url or request.path == motor_url %} active {% endif %}">
+                            <div class="nav-link">
+                                <span class="nav-link-icon">
+                                    <svg id="fluid" xmlns="http://www.w3.org/2000/svg" width="20.65" height="33.672" viewBox="0 0 20.65 33.672">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#fluid"></use>
+                                    </svg>
+                                </span>
+                                <span class="nav-link-label">Surface Equipment</span>
+                            </div>
+                            <a href="{{ gearbox_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == gearbox_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-label">Gearbox</span>
+                                </div>
+                            </a>
+                            <a href="{{ motor_url }}">
+                                <div class="nav-link nav-sub-link {% if request.path == motor_url %} active {% endif %}">
+                                    <span class="nav-link-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+                                            <use xlink:href="{% static 'res/svg/nav-icons.svg' %}#well"></use>
+                                        </svg>
+                                    </span>
+                                    <span class="nav-link-label">Motor</span>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+        </nav>
+    </div>
+    <div class="sidebar-buttons">
+        <button class="sidebar-button">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#listview"></use>
+                    </svg>
+                </svg>
+            </span>
+        </button>
+        <button class="sidebar-button">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#other"></use>
+                </svg>
+            </span>
+        </button>
+    </div>
+</div>

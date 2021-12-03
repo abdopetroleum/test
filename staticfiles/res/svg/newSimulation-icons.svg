@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+
+    <defs>
+
+<!--Ids are important        -->
+
+        <svg id="new-simulation-back" xmlns="http://www.w3.org/2000/svg" width="48.002" height="48.002" viewBox="0 0 48.002 48.002">
+            <g id="Group_123" data-name="Group 123" transform="translate(-434 -119.904)">
+                <path id="Fill_1" data-name="Fill 1" d="M48,24A24,24,0,1,1,24,0,24.027,24.027,0,0,1,48,24" transform="translate(482.002 119.904) rotate(90)" fill="#6a75ca" opacity="0.4"/>
+                <path id="Fill_4" data-name="Fill 4" d="M20.263,1.8a1.792,1.792,0,0,1-.526,1.27l-8.328,8.369a1.8,1.8,0,0,1-2.551,0L.525,3.068A1.8,1.8,0,0,1,3.076.529l7.056,7.087L17.189.529A1.8,1.8,0,0,1,20.263,1.8" transform="translate(463.261 133.77) rotate(90)" fill="#6a75ca"/>
+            </g>
+        </svg>
+
+    </defs>
+
+</svg>

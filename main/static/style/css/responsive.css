@@ -1,0 +1,72 @@
+@media (max-height: 740px) {
+  .dashboard-brand {
+    top: 60px;
+    left: 64px;
+  }
+
+  .dashboard-btn {
+    top: 350px;
+    left: 0;
+    padding: 20px;
+    border-radius: 0 25px 25px 0;
+  }
+
+  .dashboard-container {
+    margin: 0;
+    padding: 48px 64px;
+    border-radius: 0;
+    height: 100vh;
+  }
+}
+@media (max-height: 699px) {
+  .dashboard-brand {
+    top: 35px;
+    left: 48px;
+  }
+
+  .dashboard-nav a.exit div {
+    margin-top: 30vh;
+  }
+
+  .dashboard-btn {
+    padding: 16px;
+  }
+
+  .dashboard-container {
+    padding: 24px 48px;
+  }
+}
+@media (max-height: 639px) {
+  .dashboard-brand {
+    top: 35px;
+    left: 48px;
+  }
+
+  .dashboard-nav a.exit div {
+    margin-top: 24vh;
+  }
+
+  .dashboard-container-header {
+    margin-bottom: 16px;
+  }
+
+  .dashboard-container-content .recent-simulations {
+    padding: 32px 32px 32px 0;
+  }
+  .dashboard-container-content .recent-simulations .header {
+    font-size: 18px;
+  }
+  .dashboard-container-content .new-simulation .new-simulation-form {
+    border-radius: 32px;
+    padding: 32px;
+  }
+  .dashboard-container-content .new-simulation .new-simulation-form .header {
+    font-size: 18px;
+  }
+  .dashboard-container-content .new-simulation .new-simulation-form .input-btn {
+    padding: 16px;
+    font-size: 16px;
+  }
+}
+
+/*# sourceMappingURL=responsive.css.map */

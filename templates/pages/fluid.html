@@ -1,0 +1,184 @@
+{% comment %} {% load static %}
+{% load numberInput dropDown headline %}
+
+
+<div class="main">
+    <div class="main-header">
+        <div class="header-labelIcon">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="129.148" height="48" viewBox="0 0 129.148 48">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#pvt-label"></use>
+                        </svg>
+                    </span>
+        </div>
+        <div class="header-timeline">
+            <div class="header-timeline-item active">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.325" height="20.325" viewBox="0 0 20.325 20.325">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#data-input"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Data Input</span>
+            </div>
+            <div onclick="chartsToggle(this)" class="header-timeline-item">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#charts"></use>
+                            </svg>
+                        </span>
+                <span class="timeline-item-label">Charts</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-grid">
+
+        <div class="card card--input card__maximized">
+
+            <div class="toggles">
+                <button class="maximize" onclick="maximizeToggle()">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="23" viewBox="0 0 52 46">
+                        <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#maximize-toggle"></use>
+                    </svg>
+                </button>
+                <button class="save">save</button>
+            </div>
+
+            <div class="card-header"><span>Data Input</span><span onclick="instructionModalToggle();" class="instruction-label">instruction</span></div>
+
+            <div class="card-content">
+                <form id="pvt_form" action="{% url 'simulation:simulation.run.fluid' simulation.url %}" method="post">
+
+                    {% csrf_token %}
+
+                    <div class="input-row">
+                        <div class="input-field__inline test" id="oilgravity">
+                            {% numberInput 'Oil Gravity' 'oil_gravity' 'API' 5 60 required='required' value=simulation.fluid.oil_gravity %}
+                        </div>
+                        <div class="input-field__inline test" id="gasspecificgravity">
+                            {% numberInput 'Gas Specific Gravity' 'gas_specific_gravity' '' 0.5 2 required='required' value=simulation.fluid.gas_specific_gravity %}
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field__inline" id="watercut">
+                            {% numberInput 'Water Cut' 'water_cut' '%' 0 100 required='required' value=simulation.fluid.water_cut %}
+                        </div>
+
+                        <div class="input-field__inline" id="watersalinity">
+                            {% numberInput 'Water Salinity' 'water_salinity' 'ppm' 0 500000 required='required' value=simulation.fluid.water_salinity %}
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field__inline" id="bubblepointpressure">
+                            {% numberInput 'Bubble Point Pressure' 'bubble_point_pressure' 'Psig' 1 100000 required='required' value=simulation.fluid.bubble_point_pressure %}
+                        </div>
+
+                        <div class="input-field__inline" id="waterspecificgravity">
+                            {% numberInput 'Water Specific Gravity' 'water_specific_gravity' '' 1 2.5 required='required' value=simulation.fluid.water_specific_gravity %}
+                        </div>
+
+                    </div>
+                    <div class="input-row">
+                        <div class="input-field__inline" id="gasoilratio">
+                            {% numberInput 'Gas Oil Ratio' 'gas_oil_ratio' 'scf/bbl' 1 150000 required='required' value=simulation.fluid.gas_oil_ratio %}
+                        </div>
+
+                        <div class="input-field__inline" id="oilviscosity">
+                            {% numberInput 'Oil Viscosity' 'oil_viscosity' 'cp' 0.001 20000 required='required' value=simulation.fluid.oil_viscosity %}
+                        </div>
+
+                    </div>
+                    <div class="input-row">
+                        <div class="input-field__inline" id="oilcompressibility">
+                            {% numberInput 'Oil Compressibility' 'oil_compressibility' '1/psi (psi ^-1)' 1 150000 required='required' value=simulation.fluid.oil_compressibility %}
+                        </div>
+
+                        <div class="input-field__inline" id="oilformationvolumefactor">
+                            {% numberInput 'Oil Formation Volume Factor' 'oil_formation_volume_factor' 'bbl/STB' 0.001 20000 required='required' value=simulation.fluid.oil_formation_volume_factor %}
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field__inline" id="_temperature">
+                            {% numberInput 'Temperature' 'temperature' 'F' 0 100 required='required' value=simulation.fluid.temperature %}
+                        </div>
+                    </div>
+                    {% headline 'Gas Impurities' %}
+                    <div class="input-row">
+                        <div class="input-field__inline" id="_CO2">
+                            {% numberInput 'CO2' 'co2' '%' 0 100 required='required' value=simulation.fluid.co2 %}
+                        </div>
+
+                        <div class="input-field__inline" id="_H2S">
+                            {% numberInput 'H2S' 'h2s' '%' 0 100 required='required' value=simulation.fluid.h2s %}
+                        </div>
+
+                        <div class="input-field__inline" id="_N2">
+                            {% numberInput 'N2' 'n2' '%' 0 100 required='required' value=simulation.fluid.n2 %}
+                        </div>
+                    </div>
+                    {% headline 'Correlations' %}
+                    <div class="input-row">
+                        {% dropDown 'Oil Gravity' 'oil_gravity_correlation' %}
+                        {% dropDown 'Bubble Point Pressure' 'bubble_point_pressure_correlation' %}
+                    </div>
+                    <div class="input-row">
+                        {% dropDown 'Gas Oil Ratio' 'gas_oil_ratio_correlation' %}
+                        {% dropDown 'Z factor' 'z_factor_correlation' %}
+                    </div>
+                    <div class="input-row">
+                        {% dropDown 'Dead oil Viscosity' 'dead_oil_viscosity_correlation' %}
+                        {% dropDown 'Water Viscosity' 'water_viscosity_correlation' %}
+                    </div>
+                    <div class="input-row">
+                        {% dropDown 'Saturated oil Viscosity' 'saturated_oil_viscosity_correlation' %}
+                        {% dropDown 'Undersaturated oil Viscosity' 'undersaturated_oil_viscosity_correlation' %}
+
+                    </div>
+                    <div class="input-row">
+                        {% dropDown 'Gas Viscosity' 'gas_viscosity_correlation' %}
+                    </div>
+
+                    {% headline 'Seperator Related Information' %}
+                    <div class="input-row">
+                        <div class="input-field__inline test" id="inletfluidgor">
+                            {% numberInput 'Inlet Fluid Gor' 'inlet_fluid_gor' 'scf/bbl' 0 2000 required='required' value=simulation.fluid.inlet_fluid_gor %}
+                        </div>
+                        <div class="input-field__inline test" id="gasviscosity">
+                            {% numberInput 'Gas Viscosity' 'gas_viscosity' 'N.s/m^2' 0.001 20000 required='required' value=simulation.fluid.gas_viscosity %}
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-field__inline test" id="gasdensity">
+                            {% numberInput 'Gas density' 'gas_density' 'kg/m³' 0.001 20000 value=simulation.fluid.gas_density %}
+                        </div>
+                        <div class="input-field__inline test" id="gasviscosity">
+                            {% numberInput 'Oil Density' 'oil_density' 'kg/m³' 0.001 20000 required='required' value=simulation.fluid.oil_density %}
+                        </div>
+                    </div>
+
+                    <div class="btn-row">
+                        <input class="input-btn input-btn-primary" type="submit" value="Next">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="sub-grid hidden">
+
+
+            <div class="card card--second">
+                <canvas id="myChart" width="400" height="400"></canvas>
+            </div>
+
+            <div class="card"></div>
+
+        </div>
+
+
+    </div>
+
+</div> {% endcomment %}

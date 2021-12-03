@@ -1,0 +1,104 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load numberInput_test dropDown_test singleRangeSlider doubleRangeSlider %}
+
+
+
+{% block title %}
+    PVT
+{% endblock %}
+
+{% block sidebar %}
+    {% include "layouts/left_sidebar.html" %}
+{% endblock %}
+
+{% block main %}
+    {#  {% include "../pages/well.html" %}#}
+
+    <div class="main">
+        <div class="main-header">
+            <div class="header-labelIcon">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="129.148" height="48" viewBox="0 0 129.148 48">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#pvt-label"></use>
+                        </svg>
+                    </span>
+            </div>
+            <div class="header-timeline">
+                <div class="header-timeline-item active">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20.325" height="20.325" viewBox="0 0 20.325 20.325">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#data-input"></use>
+                            </svg>
+                        </span>
+                    <span class="timeline-item-label">Data Input</span>
+                </div>
+                <div onclick="chartsToggle(this)" class="header-timeline-item">
+                        <span class="timeline-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                            <use xlink:href="{% static 'res/svg/timeline-icons.svg' %}#charts"></use>
+                            </svg>
+                        </span>
+                    <span class="timeline-item-label">Charts</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+
+            <div class="card card--input card__maximized">
+
+                <div class="toggles">
+                    <button class="maximize" onclick="maximizeToggle()">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26" height="23" viewBox="0 0 52 46">
+                            <use xlink:href="{% static 'res/svg/btn-icons.svg' %}#maximize-toggle"></use>
+                        </svg>
+                    </button>
+                    <button class="save">save</button>
+
+                </div>
+
+                <div class="card-header">Data Input</div>
+
+                <div class="card-content">
+                    <form id="pvt_form" action="{% url 'simulations:run.well' simulation.url %}" method="post">
+
+                        {% csrf_token %}
+
+                        <div class="input-row">
+                            {% numberInput_test 'Label goes here' 'tag_name_goes_here' '{"1":"psi","2":"spu"}' 'unit_tag_name_goes_here' 0 15 1.5 13.5 'Placeholder goes here' 'tooltip text goes here' required='required'%}
+                            {% dropDown_test 'Label goes here' 'tag_name_goes_here' '{"1":"first option","2":"second option"}' 'Placeholder goes here' 'tooltip text goes here' required='required' %}
+                        </div>
+                        <div class="input-row">
+                            {% singleRangeSlider 'Label goes here' 'tag_name_goes_here' '{"1":"psi","2":"spu"}' 'unit_tag_name_goes_here' 0 300 0.1 30 'tooltip text goes here' required='required'%}
+                            {% doubleRangeSlider 'Label goes here' 'first_input_tag_name_goes_here' 'second_input_tag_name_goes_here' '{"1":"psi","2":"spu"}' 'unit_tag_name_goes_here' 0 100 0.1 30 60 'tooltip text goes here' required='required'%}
+                        </div>
+
+                        <div class="btn-row">
+                            <a href="{% url 'simulations:run.ipr' simulation.url %}" class="input-btn input-btn-secondary">Previous</a>
+                            <input class="input-btn input-btn-primary" type="submit" value="Next">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="sub-grid hidden">
+
+
+                <div class="card card--second">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+
+                <div class="card"></div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block options %}
+    {% include "layouts/right_sidebar.html" %}
+{% endblock %}

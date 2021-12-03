@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <title> TEST </title>
+    <style>
+        .royalblue {
+            color: royalblue;
+        }
+        .darkgray {
+            color: darkgray;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .container {
+            border-left: 100px solid royalblue;
+            
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+        }
+        .container-error {
+            border-left: 100px solid orange;
+        }
+        .content {
+            padding-left: 20px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class='container
+    {% if error %} container-error {% endif %}
+    '>
+        <div class='content'>
+            <h1 class='royalblue
+            {% if error %} error {% endif %}
+            '> {{ heading }} </h1>
+            <h2 class='darkgray'> {{ result }} </h2>
+        </div>
+    </div>
+</body>

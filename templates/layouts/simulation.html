@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+
+{% block title %}
+  PVT
+{% endblock %}
+
+{% block sidebar %}
+  {% include "layouts/left_sidebar.html" %}
+{% endblock %}
+
+{% block main %}
+  {% include "pages/fluid.html" %}
+{% endblock %}
+
+{% block options %}
+  {% include "layouts/right_sidebar.html" %}
+{% endblock %}

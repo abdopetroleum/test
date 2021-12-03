@@ -1,0 +1,205 @@
+{% extends "layouts/simulation_base.html" %}
+
+{% load static %}
+
+{% block modals %}
+    <!--Delete Modal-->
+    <div class="delete-modal-overlay-back">
+
+        <div class="delete-modal-body">
+
+            <div class="modal-title">
+            <span class="modal-title-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                      <g id="Delete" transform="translate(0.06)">
+                        <path id="Subtraction_1" data-name="Subtraction 1" d="M14,28A14,14,0,1,1,28,14,14.016,14.016,0,0,1,14,28ZM7,12.25v3.5H21v-3.5Z" transform="translate(-0.06)" fill="#fff"></path>
+                      </g>
+                    </svg>
+
+                </span>
+                <span class="modal-title-label">Warning!</span>
+            </div>
+
+            <div class="modal-context">
+                <p>The simulation <span>"<span>NameGoesHere</span>"</span> and all its data will be permanently lost and can not be recovered!</p>
+            </div>
+
+            <form action="DeleteUrlGoesHere" method="post" id="delete-form">
+                {% csrf_token %}
+                <input type="submit" value="Delete Simulation" />
+            </form>
+
+            <button>Cancel</button>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block dashboard_header %}
+    <div class="dashboard-container-header">
+        <div class="welcome-text dashboard-page-header">
+            <span>Simulations List</span>
+        </div>
+        <div class="header-profile">
+            <div class="indicator">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="15" viewBox="0 0 17 15">
+                    <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#profile-indicator"></use>
+                </svg>
+            </div>
+            <div class="label">Profile</div>
+            <div class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74">
+                    <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#header-profile"></use>
+                </svg>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block dashboard_content %}
+    <div class="dashboard-container-content flex-column">
+
+        <div class="simulations-list-header">
+            <div class="search">
+                <label for="Search">Search</label><br>
+                <input id="Search" type="search" placeholder="Enter a keyword to search...">
+            </div>
+            <div class="sort">
+
+                <span class="label">Sort By</span>
+
+                <div class="sort-items">
+                    <label class="sort-choice">
+                        <span class="sort-label">Oldest</span>
+                        <input type="radio" value="1" name="sort">
+                    </label>
+                    <label class="sort-choice checked">
+                        <span class="sort-label">Newest</span>
+                        <input type="radio" value="2" name="sort">
+                    </label>
+                    <label class="sort-choice">
+                        <span class="sort-label">Completed</span>
+                        <input type="radio" value="3" name="sort">
+                    </label>
+                    <label class="sort-choice">
+                        <span class="sort-label">Incomplete</span>
+                        <input type="radio" value="4" name="sort">
+                    </label>
+                </div>
+
+            </div>
+            <div class="new-simulation-btn">
+                <a href="{% url 'simulations:create' %}">
+                    Start a new simulation
+                </a>
+            </div>
+        </div>
+
+        <div class="simulations-list">
+            <div class="simulations-table-header simulations-table-structure">
+                <div class="structured">Status</div>
+                <div class="structured">Name</div>
+                <div class="structured">Date</div>
+                <div class="structured">Created By</div>
+                <div class="structured"></div>
+            </div>
+            <div class="simulations-table">
+                {% for simulation in simulations %}
+                    <div class="simulations-table-item simulations-table-structure">
+                        <div class="structured status">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="55" height="57" viewBox="0 0 55 57">
+                                <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulation-status-warning"></use>
+                            </svg>
+                        </div>
+                        <div class="structured name">
+                            <div contenteditable="false" class="text">{{ simulation.name }}</div>
+                            <div class="edit-actions hidden">
+                                <span class="discard-text">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-discard"></use>
+                                    </svg>
+
+                                </span>
+                                <span class="save-text">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-save"></use>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="structured date">{{ simulation.created_at|date:"d M Y" }}</div>
+                        <div class="structured creator">
+                            {% if simulation.creator %}
+                                {{ simulation.creator.email }}
+                            {% endif %}
+                        </div>
+                        <div class="structured actions">
+
+                            <button class="action remove">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-remove"></use>
+                                </svg>
+                            </button>
+
+                            <button class="action edit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-edit"></use>
+                                </svg>
+                            </button>
+
+                        </div>
+
+                        <form class="link-to-url" action="{% url 'simulations:run' simulation.url %}">
+                            <input type="submit" value="Go to url" />
+                        </form>
+
+                        <span class="delete-url">{% url 'simulations:delete' simulation.url %}</span>
+
+                    </div>
+                {% endfor %}
+                {% comment %} <a class="simulations-table-item simulations-table-structure">
+                    <div class="structured status">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="57" viewBox="0 0 55 57">
+                            <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulation-status-warning"></use>
+                        </svg>
+                    </div>
+
+                    <div class="structured name">
+                        <div contenteditable="false" class="text">SRP Simulation Initial</div>
+                        <div class="edit-actions hidden">
+                            <span class="discard-text">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-discard"></use>
+                                </svg>
+
+                            </span>
+                            <span class="save-text">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-save"></use>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="structured date">June 24th, 2021</div>
+                    <div class="structured creator">R&D Department</div>
+                    <div class="structured actions">
+                        <button class="action remove">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-remove"></use>
+                            </svg>
+                        </button>
+                        <button class="action edit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <use xlink:href="{% static 'res/svg/simulationsList-icons.svg' %}#simulations-list-edit"></use>
+                            </svg>
+                        </button>
+                    </div>
+                </a> {% endcomment %}
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 20.65 35.277">
+
+    <defs>
+
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="16" height="10.526" viewBox="0 0 16 10.526">-->
+        <g id="options-dropdown" data-name="Group 103" transform="translate(-1674 -182.929)">
+            <rect id="Rectangle_686" data-name="Rectangle 686" width="11.314" height="3.573" rx="1.786" transform="translate(1676.526 182.929) rotate(45)" fill="#c1c1c1"/>
+            <rect id="Rectangle_687" data-name="Rectangle 687" width="11.314" height="3.573" rx="1.786" transform="translate(1690 185.456) rotate(135)" fill="#c1c1c1"/>
+        </g>
+
+        <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52" height="46" viewBox="0 0 52 46">-->
+        <g id="maximize-toggle" transform="translate(-903 -102)">
+            <g transform="matrix(1, 0, 0, 1, 903, 102)"><rect width="34" height="28" rx="9" transform="translate(9 6)" fill="#e1e1e1"/>
+            </g><g transform="matrix(1, 0, 0, 1, 903, 102)"><rect width="25" height="20" rx="7" transform="translate(9 14)" fill="#cacaca"/></g>
+        </g>
+
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20">-->
+        <g id="listview" data-name="Group 101" transform="translate(-62 -996)">
+            <rect id="Rectangle_679" data-name="Rectangle 679" width="22" height="4" rx="2" transform="translate(62 996)" fill="#6a75ca"/>
+            <rect id="Rectangle_680" data-name="Rectangle 680" width="10" height="4" rx="2" transform="translate(62 1004)" fill="#6a75ca"/>
+            <rect id="Rectangle_681" data-name="Rectangle 681" width="16" height="4" rx="2" transform="translate(62 1012)" fill="#6a75ca"/>
+        </g>
+
+        <!--<svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25">-->
+        <g id="other" data-name="Group 102" transform="translate(-122 -992)">
+            <g id="Rectangle_683" data-name="Rectangle 683" transform="translate(122 998)" fill="none" stroke="#6a75ca" stroke-width="3">
+                <rect width="21" height="19" rx="6" stroke="none"/>
+                <rect x="1.5" y="1.5" width="18" height="16" rx="4.5" fill="none"/>
+            </g>
+            <rect id="Rectangle_684" data-name="Rectangle 684" width="9" height="4" rx="2" transform="translate(128 1007)" fill="#6a75ca"/>
+            <rect id="Rectangle_685" data-name="Rectangle 685" width="14" height="14" rx="7" transform="translate(131 992)" fill="#6a75ca"/>
+        </g>
+
+
+    </defs>
+
+</svg>

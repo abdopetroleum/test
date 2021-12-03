@@ -1,0 +1,49 @@
+{% load static %}
+
+<div class="dashboard-nav">
+
+    <a href="{% url 'main:index' %}">
+        <div class="dashboard-nav-item {% if '/dashboard' in request.path %} {{ "active" }} {% endif %}">
+        <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+                <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#nav-dashboard"></use>
+            </svg>
+        </span>
+            <span class="label">Dashboard</span>
+        </div>
+    </a>
+    <a>
+        <div class="dashboard-nav-item">
+        <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+                <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#nav-profile"></use>
+            </svg>
+        </span>
+            <span class="label">Profile</span>
+        </div>
+    </a>
+    <a href="{% url 'simulations:simulations' %}">
+        <div class="dashboard-nav-item {% if '/simulations' in request.path %} {{ "active" }} {% endif %}">
+        <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="21.537" height="23.255" viewBox="0 0 21.537 23.255">
+                <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#nav-simulations"></use>
+            </svg>
+        </span>
+            <span class="label">Simulations</span>
+        </div>
+    </a>
+
+    <a href="{% url 'users:signout' %}" class="exit">
+        <div>
+
+            <span class="icon">
+                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <use xlink:href="{% static 'res/svg/dashboard-icons.svg' %}#nav-exit"></use>
+                </svg>
+            </span>
+
+            <span class="label">Exit</span>
+
+        </div>
+    </a>
+</div>
